@@ -7,20 +7,14 @@ class GameProvider extends ChangeNotifier {
   List<Game> games = [];
   bool isLoading = false;
 
-  // Fetch game list
+  GameProvider() {
+    fetchGameList();
+  }
+
   Future<void> fetchGameList() async {
     isLoading = true;
     notifyListeners();
     games = await _apiService.fetchGames();
-    isLoading = false;
-    notifyListeners();
-  }
-
-  // Search games
-  Future<void> searchGames(String query) async {
-    isLoading = true;
-    notifyListeners();
-    games = await _apiService.searchGames(query);
     isLoading = false;
     notifyListeners();
   }
