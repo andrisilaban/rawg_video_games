@@ -30,7 +30,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  dio: ^5.4.0    # For API requests
+  provider: ^6.0.0   # State management
+  sqflite: ^2.3.0   # Local database for Favorites
+  path_provider: ^2.1.0  # To get the database path
+  intl: ^0.18.0  
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
