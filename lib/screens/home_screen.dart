@@ -22,10 +22,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(47, 61, 81, 1),
+        backgroundColor: primaryColor,
         title: const Text(
           'Games For You',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: whiteColor),
         ),
         actions: [
           IconButton(
@@ -108,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 fit: BoxFit.cover,
                               ),
                             ),
-                            const SizedBox(width: 16),
+                            sw15,
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -117,14 +117,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                     game.name,
                                     style: ts16BlackBold,
                                   ),
-                                  const SizedBox(height: 8),
+                                  sh10,
                                   Text('Released date ${game.released}'),
-                                  const SizedBox(height: 8),
+                                  sh10,
                                   Row(
                                     children: [
                                       const Icon(Icons.star,
                                           color: Colors.orange),
-                                      const SizedBox(width: 5),
+                                      sw5,
                                       Text('${game.rating}'),
                                     ],
                                   ),
@@ -142,12 +142,12 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Provider.of<GameProvider>(context, listen: false).fetchGameList();
-        },
-        child: const Icon(Icons.refresh),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Provider.of<GameProvider>(context, listen: false).fetchGameList();
+      //   },
+      //   child: const Icon(Icons.refresh),
+      // ),
     );
   }
 }

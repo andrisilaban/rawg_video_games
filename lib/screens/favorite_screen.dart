@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../constants/constants.dart';
 import '../providers/game_provider.dart';
-import 'game_detail_screen.dart';
 
 class FavoriteScreen extends StatefulWidget {
   const FavoriteScreen({super.key});
@@ -15,7 +14,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    // Refresh favorites when the screen is shown
+
     Provider.of<GameProvider>(context, listen: false).fetchFavorites();
   }
 
@@ -23,10 +22,10 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(47, 61, 81, 1),
+        backgroundColor: primaryColor,
         title: const Text(
           'Favorite Games',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: whiteColor),
         ),
       ),
       body: Consumer<GameProvider>(
@@ -42,7 +41,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                 children: [
                   Container(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 10), // Add vertical padding
+                        horizontal: 20.0, vertical: 10),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -55,8 +54,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        const SizedBox(
-                            width: 16), // Space between image and text
+                        sw15,
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,17 +63,13 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                                 game.name,
                                 style: ts16BlackBold,
                               ),
-                              const SizedBox(
-                                  height:
-                                      8), // Space between title and release date
+                              sh10,
                               Text('Released date ${game.released}'),
-                              const SizedBox(
-                                  height:
-                                      8), // Space between release date and rating
+                              sh10,
                               Row(
                                 children: [
                                   const Icon(Icons.star, color: Colors.orange),
-                                  const SizedBox(width: 5),
+                                  sw5,
                                   Text('${game.rating}'),
                                 ],
                               ),

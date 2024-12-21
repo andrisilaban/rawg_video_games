@@ -10,7 +10,7 @@ class GameDetailScreen extends StatefulWidget {
   const GameDetailScreen({super.key, required this.gameId});
 
   @override
-  _GameDetailScreenState createState() => _GameDetailScreenState();
+  State<GameDetailScreen> createState() => _GameDetailScreenState();
 }
 
 class _GameDetailScreenState extends State<GameDetailScreen> {
@@ -47,13 +47,13 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromRGBO(47, 61, 81, 1),
+        backgroundColor: primaryColor,
         title: const Text(
           'Detail',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: whiteColor),
         ),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: whiteColor),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -125,13 +125,13 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                         game.name,
                         style: ts16BlackBold,
                       ),
-                      const SizedBox(height: 8),
+                      sh10,
                       Text('Released date ${game.released}'),
-                      const SizedBox(height: 8),
+                      sh10,
                       Row(
                         children: [
                           const Icon(Icons.star, color: Colors.orange),
-                          const SizedBox(width: 5),
+                          sw5,
                           Text('${game.rating}'),
                         ],
                       ),
