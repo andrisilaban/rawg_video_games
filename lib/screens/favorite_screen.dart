@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../constants/constants.dart';
+import '../main.dart';
 import '../providers/game_provider.dart';
 
 class FavoriteScreen extends StatefulWidget {
@@ -20,6 +21,8 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
@@ -61,7 +64,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             children: [
                               Text(
                                 game.name,
-                                style: ts16BlackBold,
+                                style: themeProvider.isDarkMode
+                                    ? ts16BlackWhite
+                                    : ts16BlackBold,
                               ),
                               sh10,
                               Text('Released date ${game.released}'),

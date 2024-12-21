@@ -17,6 +17,5 @@ TextStyle ts20Grey = const TextStyle(color: Colors.grey, fontSize: 20);
 
 TextStyle ts16BlackBold = const TextStyle(
     color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold);
-TextStyle ts16Black54 = const TextStyle(color: Colors.black54, fontSize: 16);
-TextStyle ts16GreyW700 = TextStyle(color: Colors.grey[700], fontSize: 16);
-TextStyle ts16Primary = const TextStyle(color: primaryColor, fontSize: 16);
+TextStyle ts16BlackWhite = const TextStyle(
+    color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold);

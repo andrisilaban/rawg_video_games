@@ -66,6 +66,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
               ),
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+              ),
             ),
           ),
           Expanded(
@@ -115,7 +119,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 children: [
                                   Text(
                                     game.name,
-                                    style: ts16BlackBold,
+                                    style: themeProvider.isDarkMode
+                                        ? ts16BlackWhite
+                                        : ts16BlackBold,
                                   ),
                                   sh10,
                                   Text('Released date ${game.released}'),
@@ -142,12 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Provider.of<GameProvider>(context, listen: false).fetchGameList();
-      //   },
-      //   child: const Icon(Icons.refresh),
-      // ),
     );
   }
 }

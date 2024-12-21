@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import '../constants/constants.dart';
+import 'package:provider/provider.dart';
+import 'package:rawg_video_games/constants/constants.dart';
+
+import '../main.dart';
 import '../models/game.dart';
 import '../services/db_service.dart';
 import '../services/api_service.dart';
@@ -45,6 +48,8 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: primaryColor,
@@ -123,7 +128,9 @@ class _GameDetailScreenState extends State<GameDetailScreen> {
                     children: [
                       Text(
                         game.name,
-                        style: ts16BlackBold,
+                        style: themeProvider.isDarkMode
+                            ? ts16BlackWhite
+                            : ts16BlackBold,
                       ),
                       sh10,
                       Text('Released date ${game.released}'),
