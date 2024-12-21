@@ -8,6 +8,17 @@ void main() {
   runApp(const MyApp());
 }
 
+class ThemeProvider with ChangeNotifier {
+  bool _isDarkMode = false;
+
+  bool get isDarkMode => _isDarkMode;
+
+  void toggleTheme() {
+    _isDarkMode = !_isDarkMode;
+    notifyListeners();
+  }
+}
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -16,11 +27,20 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => GameProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
       ],
-      child: MaterialApp(
-        title: 'RAWG Game App',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: const MainScreen(),
+      child: Consumer<ThemeProvider>(
+        builder: (context, themeProvider, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'RAWG Game App',
+            theme: ThemeData.light(),
+            darkTheme: ThemeData.dark(),
+            themeMode:
+                themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
+            home: const MainScreen(),
+          );
+        },
       ),
     );
   }
@@ -36,13 +56,11 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  // Pages
   static final List<Widget> _pages = <Widget>[
     const HomeScreen(),
     const FavoriteScreen(),
   ];
 
-  // Handle bottom nav clicks
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;

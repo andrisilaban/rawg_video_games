@@ -23,11 +23,13 @@ class DatabaseHelper {
       version: 1,
       onCreate: (db, version) {
         db.execute('''
-          CREATE TABLE favorites (
+          CREATE TABLE favorites(
             id INTEGER PRIMARY KEY,
             name TEXT,
             background_image TEXT,
-            rating REAL
+            rating REAL,
+            released TEXT,         -- Add released column
+            description_raw TEXT   -- Add description_raw column
           )
         ''');
       },

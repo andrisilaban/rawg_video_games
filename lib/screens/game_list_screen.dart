@@ -8,11 +8,15 @@ class GameListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Game List')),
+      appBar: AppBar(
+          foregroundColor: Colors.amber,
+          backgroundColor: Colors.blue,
+          title: const Text('Game List')),
       body: Consumer<GameProvider>(
         builder: (context, provider, child) {
-          if (provider.isLoading)
+          if (provider.isLoading) {
             return const Center(child: CircularProgressIndicator());
+          }
           return ListView.builder(
             itemCount: provider.games.length,
             itemBuilder: (context, index) {
@@ -26,11 +30,11 @@ class GameListScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () =>
-            Provider.of<GameProvider>(context, listen: false).fetchGameList(),
-        child: const Icon(Icons.refresh),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () =>
+      //       Provider.of<GameProvider>(context, listen: false).fetchGameList(),
+      //   child: const Icon(Icons.refresh),
+      // ),
     );
   }
 }
